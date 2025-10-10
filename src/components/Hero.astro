@@ -3,6 +3,8 @@ const personalImageAlt = "Brandon Diaz"
 import Badge from "@/components/Badge.astro"
 import LinkedInIcon from "@/components/icons/LinkedIn.astro"
 import MailIcon from "@/components/icons/Mail.astro"
+// import JEJE from "@/components/archivos/CV-ING-DIAZ-CASTILLO-BRANDON.pdf"
+import Curriculum from "@/components/icons/Curriculum.astro"
 import SocialPill from "@/components/SocialPill.astro"
 ---
 
@@ -43,5 +45,9 @@ import SocialPill from "@/components/SocialPill.astro"
       <LinkedInIcon class="size-4" />
       LinkedIn
     </SocialPill>
-  </nav>
+    
+  <SocialPill href="/CV-ING-DIAZ-CASTILLO-BRANDON.pdf" download="CV-ING-DIAZ-CASTILLO-BRANDON.pdf">
+      <Curriculum class="size-4" />
+      Descargar CV
+    </SocialPill></nav>
 </div>
