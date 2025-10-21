@@ -1,26 +1,44 @@
 ---
 import GitHub from "./icons/GitHub.astro"
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
+import Html from "./icons/Html.astro"
+import Javascript from "./icons/Javascript.astro"
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
 import Php from "./icons/Php.astro"
+import Treejs from "./icons/Treejs.astro"
+import Bootstrap from "./icons/Bootstrap.astro"
+import Sql from "./icons/Mysql.astro"
 
 const TAGS = {
-  NEXT: {
-    name: "Next.js",
+  TREEJS: {
+    name: "Tree.js",
     class: "bg-black text-white",
-    icon: NextJS,
+    icon: Treejs,
   },
-  TAILWIND: {
-    name: "Tailwind CSS",
+  BOOTSTRAP: {
+    name: "Bootstrap",
     class: "bg-[#003159] text-white",
-    icon: Tailwind,
+    icon: Bootstrap,
   },
   PHP: {
     name: "PHP",
     class: "bg-orange-800 text-white",
     icon: Php,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-yellow-800 text-white",
+    icon: Javascript,
+  },
+  HTML: {
+    name: "HTML",
+    class: "bg-red-600 text-white",
+    icon: Html,
+  },
+  MYSQL: {
+    name: "MySQL",
+    class: "bg-blue-800 text-white",
+    icon: Sql,
   },
 }
 const PROJECTS = [
@@ -31,16 +49,17 @@ const PROJECTS = [
     link: "https://brandondc.gt.tc/biblioteca-virtua/",
     github: "https://github.com/Brandon-DC-dev/biblioteca-virtua",
     image: "/projects/phpsistem1.webp",
-    tags: [TAGS.PHP],
+    tags: [TAGS.PHP, TAGS.BOOTSTRAP, TAGS.JAVASCRIPT, TAGS.HTML, TAGS.MYSQL],
   },
-  // {
-  //   title: "AdventJS - Retos de programación con JavaScript y TypeScript",
-  //   description:
-  //     "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-  //   link: "https://adventjs.dev",
-  //   image: "/projects/adventjs.webp",
-  //   tags: [TAGS.NEXT, TAGS.TAILWIND],
-  // },
+  {
+    title: "360 Grados - Visualizador 3D con Tree.js",
+    description:
+      "Panolens.js se basa en Three.JS (un marco 3D) con un área de interés específico en panorama, realidad virtual y potencialmente realidad aumentada para un recorrido virtual.",
+    link: "https://sparkling-sunshine-da227f.netlify.app",
+    github: "https://github.com/Brandon-DC-dev/360-grados",
+    image: "/projects/360recorrido.webp",
+    tags: [TAGS.TREEJS, TAGS.JAVASCRIPT, TAGS.HTML],
+  },
 ]
 ---
 
