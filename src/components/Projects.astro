@@ -8,6 +8,8 @@ import Php from "./icons/Php.astro"
 import Treejs from "./icons/Treejs.astro"
 import Bootstrap from "./icons/Bootstrap.astro"
 import Sql from "./icons/Mysql.astro"
+import astro from "./icons/Astro.astro"
+import tailwindcss from "./icons/Tailwind.astro"
 
 const TAGS = {
   TREEJS: {
@@ -40,6 +42,16 @@ const TAGS = {
     class: "bg-blue-800 text-white",
     icon: Sql,
   },
+  ASTRO: {
+    name: "ASTRO",
+    class: "bg-[#003159] text-white",
+    icon: astro,
+  },
+  TAILWINDCSS: {
+    name: "TAILWINDCSS",
+    class: "bg-[#006b91] text-white",
+    icon: tailwindcss,
+  },
 }
 const PROJECTS = [
   {
@@ -59,6 +71,15 @@ const PROJECTS = [
     github: "https://github.com/Brandon-DC-dev/360-grados",
     image: "/projects/360recorrido.webp",
     tags: [TAGS.TREEJS, TAGS.JAVASCRIPT, TAGS.HTML],
+  },
+  {
+    title: "Sitio web PLANETA ADIUM",
+    description:
+      "pagina web Planeta ADIUM desarrollada para los productos de interes..",
+    link: "https://adium-2-0.vercel.app/",
+    // github: "https://github.com/Brandon-DC-dev/360-grados",
+    image: "/projects/planetaadium.webp",
+    tags: [TAGS.ASTRO, TAGS.TAILWINDCSS, TAGS.HTML],
   },
 ]
 ---
