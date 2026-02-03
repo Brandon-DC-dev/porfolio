@@ -25,7 +25,8 @@ const { description, title } = Astro.props;
 
     <!-- Vanata animation backgraunds -->
    <script is:inline src="https://unpkg.com/three@0.121.1/build/three.min.js"></script>
-<script is:inline src="https://unpkg.com/vanta@latest/dist/vanta.net.min.js"></script>
+<script is:inline src="https://unpkg.com/vanta@latest/dist/vanta.dots.min.js"></script>
+
 
 
   </head>
@@ -131,25 +132,23 @@ const { description, title } = Astro.props;
 
 <script is:inline>
   const initVanta = () => {
-    if (window.VANTA && window.VANTA.NET) {
-      window.VANTA.NET({
+    if (window.VANTA && window.VANTA.DOTS) {
+      window.VANTA.DOTS({
         el: "#vanta-bg",
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        color: 0x158dc0,
-        backgroundColor: 0x04002d
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0xb15302,
+  color2: 0x8c3c00
       });
     }
   };
 
-  window.VANTA
-  document.querySelector("#vanta-bg")
-  document.querySelector("#vanta-bg canvas")
-
-
-
-
   document.addEventListener("astro:page-load", initVanta);
 </script>
+
 
