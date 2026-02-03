@@ -1,17 +1,15 @@
 ---
-import "@fontsource-variable/onest"
-
-
-import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
-import { ViewTransitions } from "astro:transitions"
+import "@fontsource-variable/onest";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
-const { description, title } = Astro.props
+const { description, title } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,46 +21,32 @@ const { description, title } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
+
+    <!-- Vanata animation backgraunds -->
+   <script is:inline src="https://unpkg.com/three@0.121.1/build/three.min.js"></script>
+<script is:inline src="https://unpkg.com/vanta@latest/dist/vanta.net.min.js"></script>
+
+
   </head>
 
-  <body class="relative text-black dark:text-white">
-    <!-- <div class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
-      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
-      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-    ></div> -->
-   
-
+  <!-- <body class="relative text-black dark:text-white"> -->
+   <body class="relative bg-transparent text-black dark:text-white">
     <!-- 🌞 Fondo modo claro: Dreamy Sky Pink Glow -->
-  <div
-    class="absolute inset-0 z-[-2] min-h-screen w-full bg-[#fefcff] dark:hidden"
-    style="
+    <div
+      class="absolute inset-0 z-[-2] min-h-screen w-full bg-[#fefcff] dark:hidden"
+      style="
       background-image:
         radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%),
         radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%);
       background-repeat: no-repeat;
       background-size: cover;
     "
-  ></div>
+    >
+    </div>
 
-  <!-- Fondo modo oscuro -->
-  <div
-    class="absolute inset-0 z-[-2] min-h-screen w-full hidden dark:block bg-black"
-    style="
-      background:
-        radial-gradient(ellipse 120% 80% at 70% 20%, rgba(255, 20, 147, 0.15), transparent 50%),
-        radial-gradient(ellipse 100% 60% at 30% 10%, rgba(0, 255, 255, 0.12), transparent 60%),
-        radial-gradient(ellipse 90% 70% at 50% 0%, rgba(138, 43, 226, 0.18), transparent 65%),
-        radial-gradient(ellipse 210% 80% at 80% 30%, rgba(255, 215, 0, 0.08), transparent 40%),
-        #000000;"
-  ></div>
-<!-- 
-   <div class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
-      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
-      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-    > </div> -->
-
-
+    <!-- Fondo modo oscuro -->
+    <div id="vanta-bg" class="fixed inset-0 z-0 hidden dark:block"></div>
     <Header />
     <slot />
     <Footer />
@@ -144,3 +128,28 @@ const { description, title } = Astro.props
     </style>
   </body>
 </html>
+
+<script is:inline>
+  const initVanta = () => {
+    if (window.VANTA && window.VANTA.NET) {
+      window.VANTA.NET({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        color: 0x158dc0,
+        backgroundColor: 0x04002d
+      });
+    }
+  };
+
+  window.VANTA
+  document.querySelector("#vanta-bg")
+  document.querySelector("#vanta-bg canvas")
+
+
+
+
+  document.addEventListener("astro:page-load", initVanta);
+</script>
+
