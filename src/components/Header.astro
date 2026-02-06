@@ -31,15 +31,15 @@ const navItems = [
 ---
 
 <header
-  class="fixed top-0 z-50 flex items-center justify-center w-full mx-auto mt-2"
+  class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full mx-auto mt-2 px-2 sm:px-0"
 >
   <nav
-    class="flex px-3 text-sm md:text-base font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="flex flex-wrap justify-center items-center gap-0.5 sm:gap-1 px-2 py-1.5 sm:px-3 sm:py-2 text-xs min-[400px]:text-sm md:text-base font-medium rounded-full text-gray-600 dark:text-gray-200 max-w-[100vw]"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+          class="relative block px-1.5 py-1.5 sm:px-2 sm:py-2 transition hover:text-blue-500 dark:hover:text-blue-500 whitespace-nowrap"
           aria-label={link.label}
           href={link.url}
         >

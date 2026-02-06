@@ -1,55 +1,125 @@
 ---
-const personalImageAlt = "Brandon Diaz"
-import Badge from "@/components/Badge.astro"
-import LinkedInIcon from "@/components/icons/LinkedIn.astro"
-import MailIcon from "@/components/icons/Mail.astro"
-import Curriculum from "@/components/icons/Curriculum.astro"
-import SocialPill from "@/components/SocialPill.astro"
-
+const personalImageAlt = "Brandon Diaz";
+import Badge from "@/components/Badge.astro";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import MailIcon from "@/components/icons/Mail.astro";
+import Curriculum from "@/components/icons/Curriculum.astro";
+import SocialPill from "@/components/SocialPill.astro";
 ---
 
-<div class="max-w-xl relative z-10">
-  <div class="flex gap-4 mb-4">
-    <img
-      class="rounded-full shadow-lg size-16"
-      src="/brandonDC-dev.png"
-      alt={personalImageAlt}
-    />
-    <a
-      href="https://www.linkedin.com/in/brandon-diaz-castillo-b22620273/"
-      target="_blank"
-      rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
-    >
-      <Badge>Disponible para trabajar</Badge>
-    </a>
-  </div>
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+<!-- Hero estilo Material Design 3 / Material You -->
+<section class="relative z-10 w-full max-w-4xl mx-auto">
+  <!-- Card principal estilo glass (vidrio) con contornos #b15302 - Tailwind, backdrop-blur-none -->
+  <div
+    class="relative overflow-hidden rounded-[28px] md:rounded-[32px] p-6 sm:p-8 md:p-10 transition-all duration-300 border-2 border-[#b15302]
+      bg-white/45 dark:bg-gray-950/45 backdrop-blur-none
+      shadow-[0_8px_32px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
   >
-    Hey, soy Brandon 👋
-  </h1>
-  <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
-  >
-    +2 años de experiencia. <strong
-      >Ingeniero en Sistemas Computacionales | Desarrollador Full Stack Jr <br><br></strong 
-    > Siempre explorando nuevas metodologías y herramientas para implementar las mejores soluciones en cada situación.
-  </p>
-  <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="mailto:brandon062900@gmail.com">
-      <MailIcon class="size-4" />
-      Contáctame
-    </SocialPill>
-    <SocialPill href="https://www.linkedin.com/in/brandon-diaz-castillo-b22620273/">
-      <LinkedInIcon class="size-4" />
-      LinkedIn
-    </SocialPill>
-    
-  <SocialPill href="/CV-ING-DIAZ-CASTILLO-BRANDON.pdf" download="CV-ING-DIAZ-CASTILLO-BRANDON.pdf">
-      <Curriculum class="size-4" />
-      Descargar CV
-    </SocialPill></nav>
-    
+    <!-- Barra decorativa con color de acento -->
+    <div
+      class="absolute top-0 left-0 right-0 h-1.5 rounded-t-[28px] md:rounded-t-[32px]"
+      style="background: linear-gradient(90deg, #b15302 0%, #d96a04 50%, #b15302 100%);"
+      aria-hidden="true"
+    ></div>
 
-</div>
+    <div class="flex flex-col sm:flex-row sm:items-start gap-6 sm:gap-8 pt-2">
+      <!-- Avatar con anillo y elevación -->
+      <div class="flex-shrink-0 flex items-center gap-4 sm:block">
+        <div
+          class="relative rounded-[22px] p-1.5 w-fit border-2 border-[#b15302]/40 dark:border-[#b15302]/60 bg-white/20 dark:bg-white/10 backdrop-blur-none shadow-[0_2px_12px_rgba(177,83,2,0.2)]"
+        >
+          <img
+            class="rounded-[18px] size-20 sm:size-24 md:size-28 object-cover ring-2 ring-white/80 dark:ring-gray-800/80"
+            src="/brandonDC-dev.png"
+            alt={personalImageAlt}
+            width="112"
+            height="112"
+          />
+        </div>
+        <!-- Chip "Disponible" al lado en móvil, debajo en desktop -->
+        <a
+          href="https://www.linkedin.com/in/brandon-diaz-castillo-b22620273/"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex sm:mt-4 transition-transform hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <Badge>Disponible para trabajar</Badge>
+        </a>
+      </div>
+
+      <div class="flex-1 min-w-0">
+        <!-- Headline tipo Material display -->
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white"
+          style="letter-spacing: -0.02em;"
+        >
+          Hey, soy Brandon
+          <span class="inline-block animate-wave origin-[70%_70%]">👋</span>
+        </h1>
+
+        <!-- Subtítulo / body large -->
+        <p class="mt-4 text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl">
+          <span class="font-semibold text-gray-900 dark:text-white">+2 años de experiencia.</span>
+          <br class="sm:hidden" />
+          <span class="text-gray-700 dark:text-gray-300">
+            Ingeniero en Sistemas Computacionales · Desarrollador Full Stack Jr
+          </span>
+        </p>
+        <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+          Siempre explorando nuevas metodologías y herramientas para implementar las mejores soluciones.
+        </p>
+
+        <!-- Acciones: botones estilo Material (filled + outlined) -->
+        <nav class="flex flex-wrap gap-3 mt-8" aria-label="Contacto y redes">
+          <!-- Primary: filled button #b15302 -->
+          <a
+            href="mailto:brandon062900@gmail.com"
+            class="hero-btn-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white
+              shadow-[0_1px_3px_rgba(177,83,2,0.4)]
+              hover:opacity-95 hover:shadow-[0_2px_6px_rgba(177,83,2,0.45)]
+              active:opacity-90 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b15302] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
+            style="background-color: #b15302;"
+          >
+            <MailIcon class="size-4" />
+            Contáctame
+          </a>
+          <!-- Secondary: outlined #b15302 -->
+          <a
+            href="https://www.linkedin.com/in/brandon-diaz-castillo-b22620273/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium
+              border-2 text-[#b15302] dark:text-[#d96a04]
+              hover:bg-[#b15302]/10 dark:hover:bg-[#b15302]/15 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b15302] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
+            style="border-color: #b15302;"
+          >
+            <LinkedInIcon class="size-4" />
+            LinkedIn
+          </a>
+          <a
+            href="/Brandon_Diaz_FullStack_Developer.pdf"
+            download="CV-ING-DIAZ-CASTILLO-BRANDON.pdf"
+            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium
+              border-2 text-gray-800 dark:text-gray-200
+              hover:bg-white/30 dark:hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b15302] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
+            style="border-color: #b15302;"
+          >
+            <Curriculum class="size-4" />
+            Descargar CV
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(14deg); }
+    75% { transform: rotate(-8deg); }
+  }
+  .animate-wave {
+    animation: wave 1.5s ease-in-out infinite;
+  }
+</style>
