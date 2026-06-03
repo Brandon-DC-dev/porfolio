@@ -10,6 +10,9 @@ import Bootstrap from "./icons/Bootstrap.astro"
 import Sql from "./icons/Mysql.astro"
 import astro from "./icons/Icono.astro"
 import tailwindcss from "./icons/Tailwind.astro"
+import css from "./icons/Css.astro"
+import wordpress from "./icons/Wordpress.astro"
+import elementor from "./icons/Elementor.astro"
 
 const TAGS = {
   TREEJS: {
@@ -47,11 +50,24 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: astro,
   },
-  TAILWINDCSS: {
-    name: "TAILWINDCSS",
-    class: "bg-[#006b91] text-white",
-    icon: tailwindcss,
-  },
+    TAILWINDCSS: {
+      name: "TAILWINDCSS",
+      class: "bg-[#006b91] text-white",
+      icon: tailwindcss,
+    },  WORDPRESS: {
+      name: "WordPress",
+      class: "bg-[#13465D] text-white",
+      icon: wordpress,
+    },  ELEMENTOR: {
+      name: "Elementor",
+      class: "bg-[#530021] text-white",
+      icon: elementor,
+    },
+    CSS: {
+      name: "CSS",
+      class: "bg-[#264de4] text-white",
+      icon: css,
+    },
 }
 const PROJECTS = [
   {
@@ -81,13 +97,54 @@ const PROJECTS = [
     image: "/projects/planetaadium.webp",
     tags: [TAGS.ASTRO, TAGS.TAILWINDCSS, TAGS.HTML],
   },
+  {
+    title: "Pagina web CMO",
+    description:
+      "CMO Eduación Médica Continua dirigida a la especialidad de la Ortopedia y Traumatología de Medicos Ortopedistas, Médicos Residentes y sub especialidades. Congresos, Cursos, Talleres, Simposios, Summits.",
+     link: "https://colegiocmo.com.mx/", 
+    // github: "https://github.com/Brandon-DC-dev/biblioteca-virtua",
+    image: "/projects/cmoweb.webp",
+    tags: [TAGS.WORDPRESS, TAGS.ELEMENTOR, TAGS.JAVASCRIPT, TAGS.HTML, TAGS.CSS],
+  },
+  {
+    title: "LXXI Congreso Nacional De Ortopedia",
+    description:
+      "CONGRESO NACIONAL DE ORTOPEDIA DE LA CIUDAD DE MÉXICO - CMO LXXI",
+     link: "https://congreso2026.colegiocmo.com.mx/", 
+    // github: "https://github.com/Brandon-DC-dev/biblioteca-virtua",
+    image: "/projects/congresolxxi.webp",
+    tags: [TAGS.WORDPRESS, TAGS.ELEMENTOR, TAGS.JAVASCRIPT, TAGS.HTML, TAGS.CSS],
+  },
+  {
+    title: "LXX Congreso Nacional De Ortopedia",
+    description:
+      "CONGRESO NACIONAL DE ORTOPEDIA EXPO GUADALAJARA - CMO LXX",
+     link: "https://congreso2025.colegiocmo.com.mx/", 
+    // github: "https://github.com/Brandon-DC-dev/biblioteca-virtua",
+    image: "/projects/congresolxx.webp",
+    tags: [TAGS.WORDPRESS, TAGS.ELEMENTOR, TAGS.JAVASCRIPT, TAGS.HTML, TAGS.CSS],
+  },{
+    title: "LXIX Congreso Nacional De Ortopedia",
+    description:
+      "CONGRESO NACIONAL DE ORTOPEDIA WORLD TRADE CENTER, CIUDAD DE MÉXICO - CMO LXIX",
+     link: "https://congreso2024.colegiocmo.com.mx/", 
+    // github: "https://github.com/Brandon-DC-dev/biblioteca-virtua",
+    image: "/projects/congresolxix.webp",
+    tags: [TAGS.WORDPRESS, TAGS.ELEMENTOR, TAGS.JAVASCRIPT, TAGS.HTML, TAGS.CSS],
+  },
 ]
 ---
 
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+    PROJECTS.map(({ image, title, description, tags, link, github  }, index) => (
+    //<article 
+   // class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+   <article
+  class={`project flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 ${
+    index >= 3 ? "hidden" : ""
+  }`}
+>
   <div class="w-full md:w-1/2">
     <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
       <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
@@ -136,4 +193,36 @@ const PROJECTS = [
 </div>
 
 
+<div class="flex justify-center mt-10">
+  <button
+    id="show-more-btn"
+    class="px-6 py-3 rounded-full text-sm font-medium
+              border-2 rounded-lg hover:bg-blue-700 transition text-[#b15302] dark:text-[#ffff]
+              hover:bg-[#ffff]/10 dark:hover:bg-[#b15302]/15 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b15302] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
+            style="border-color: #b15302;"
+  >
+    Mostrar más
+  </button>
+</div>
+
+<script>
+  const button = document.getElementById("show-more-btn");
+
+  let visible = 3;
+  const step = 3;
+
+  button?.addEventListener("click", () => {
+    const projects = document.querySelectorAll(".project");
+
+    for (let i = visible; i < visible + step; i++) {
+      projects[i]?.classList.remove("hidden");
+    }
+
+    visible += step;
+
+    if (visible >= projects.length) {
+      button.style.display = "none";
+    }
+  });
+</script>
 
