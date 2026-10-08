@@ -131,24 +131,81 @@ const { description, title } = Astro.props;
 </html>
 
 <script is:inline>
-  const initVanta = () => {
-    if (window.VANTA && window.VANTA.DOTS) {
-      window.VANTA.DOTS({
-        el: "#vanta-bg",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.0,
-        minWidth: 200.0,
-        scale: 1.0,
-        scaleMobile: 1.0,
-        color: 0xb15302,
-  color2: 0x8c3c00
-      });
+  let vantaEffect = null;
+
+  const destroyVanta = () => {
+    if (vantaEffect && typeof vantaEffect.destroy === "function") {
+      try {
+        vantaEffect.destroy();
+      } catch (_) {
+        /* noop */
+      }
     }
+    vantaEffect = null;
+    // Limpieza defensiva por si quedara un <canvas> huérfano
+    const el = document.getElementById("vanta-bg");
+    if (el) el.innerHTML = "";
   };
 
-  document.addEventListener("astro:page-load", initVanta);
+  const initVanta = () => {
+    const el = document.getElementById("vanta-bg");
+    if (!el) return;
+
+    // Solo inicializar si el modo dark está activo (el contenedor debe ser visible,
+    // porque tiene `hidden dark:block` y queda display:none en modo claro).
+    const isDark = document.documentElement.classList.contains("dark");
+
+    if (!isDark) {
+      destroyVanta();
+      return;
+    }
+
+    if (!window.VANTA || !window.VANTA.DOTS) return;
+
+    // Si ya existe la instancia, solo forzamos un resize por si cambió el viewport.
+    if (vantaEffect && typeof vantaEffect.resize === "function") {
+      try {
+        vantaEffect.resize();
+      } catch (_) {
+        /* noop */
+      }
+      return;
+    }
+
+    // Por si quedó un canvas de una sesión anterior, lo limpiamos antes.
+    destroyVanta();
+
+    vantaEffect = window.VANTA.DOTS({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0xb15302,
+      color2: 0x8c3c00,
+    });
+  };
+
+  // Observar cambios en la clase `dark` del <html> para que Vanta
+  // se inicialice/destruya al cambiar el tema, sin esperar a una navegación.
+  if (!window.__vantaThemeObserverInstalled) {
+    window.__vantaThemeObserverInstalled = true;
+    const themeObserver = new MutationObserver(() => {
+      // rAF garantiza que el cambio de estilo (display:block) ya está aplicado.
+      requestAnimationFrame(initVanta);
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  }
+
+  document.addEventListener("astro:page-load", () =>
+    requestAnimationFrame(initVanta)
+  );
 </script>
 
 

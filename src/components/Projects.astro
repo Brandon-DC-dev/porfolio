@@ -13,6 +13,11 @@ import tailwindcss from "./icons/Tailwind.astro"
 import css from "./icons/Css.astro"
 import wordpress from "./icons/Wordpress.astro"
 import elementor from "./icons/Elementor.astro"
+import Supabase from "./icons/Supabase.astro"
+import React from "./icons/Rreact.astro"
+import Node from "./icons/Nnode.astro"
+import Express from "./icons/Eexpress.astro"
+
 
 const TAGS = {
   TREEJS: {
@@ -68,9 +73,45 @@ const TAGS = {
       class: "bg-[#264de4] text-white",
       icon: css,
     },
+     REACT: {
+      name: "REACT",
+      class: "bg-[#FFFF] text-black",
+      icon: React,
+    },
+     SUPABASE: {
+      name: "SUPABASE",
+      class: "bg-[#264de4] text-white",
+      icon: Supabase,
+    },
+    NODE: {
+      name: "NODE",
+      class: "bg-[#3E632D] text-white",
+      icon: Node,
+    },
+    EXPRESS: {
+      name: "EXPRESS",
+      class: "bg-[#c7a5da] text-black",
+      icon: Express,
+    }
 }
 const PROJECTS = [
   {
+    title: "Control de Tickets",
+    description:
+      "Sistema web desarrollado para la gestión y control del flujo de tickets, facilitando su administración y optimizando los flujos de trabajo. La plataforma permite mejorar los procesos operativos y generar reportes para su análisis y toma de decisiones, con base en las necesidades y gestión del área de QA.",
+     link: "https://frontend-tickets-wine.vercel.app/", 
+    // github: "https://github.com/Brandon-DC-dev/biblioteca-virtua",
+    image: "/projects/control-tickets.webp",
+    tags: [TAGS.ASTRO, TAGS.JAVASCRIPT, TAGS.HTML, TAGS.TAILWINDCSS, TAGS.REACT],
+  }, {
+    title: "Api Control de Tickets",
+    description:
+      "API backend desarrollada con Node.js y Express, utilizando Supabase como plataforma de base de datos y servicios backend. El sistema proporciona los servicios necesarios para la gestión y control del flujo de tickets, permitiendo administrar la información, procesar las operaciones y facilitar la integración con el frontend.",
+     link: "https://backend-tickets.vercel.app/api/", 
+    // github: "https://github.com/Brandon-DC-dev/biblioteca-virtua",
+    image: "/projects/api_backend_control.webp",
+    tags: [TAGS.NODE, TAGS.EXPRESS, TAGS.SUPABASE],
+  },{
     title: "Sistema de Biblioteca Virtual en PHP",
     description:
       "Biblioteca de libros en línea desarrollada en PHP con MySQL. Permite a los usuarios buscar, leer y agregar libros digitalmente. Incluye gestión de usuarios y administración.",
@@ -146,8 +187,8 @@ const PROJECTS = [
   }`}
 >
   <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50 aspect-video bg-gray-100 dark:bg-gray-800">
+      <img alt={title} class="absolute inset-0 w-full h-full object-cover object-top transition duration-500 md:group-hover:scale-105" loading="lazy" src={image} />
     </div>
   </div>
 
